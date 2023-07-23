@@ -6,9 +6,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-b88xuo$#j_$e*xzct**+s@m*ge0)vgij1kb+!u=#qz4v+(!e6andfz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['LonelyHearts.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -62,7 +62,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / '../db.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
 }
 
