@@ -1,0 +1,86 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<div id="first" class="border rounded text-center p-3 m-3 mb-5"
+     style="background-color: #ede8e4; box-shadow: 10px 10px 30px rgba(97, 70, 47, 0.8);">
+    <div class="container" id="foot">
+        <div class="row">
+            <div class="col">
+                <div class="container-fluid rounded mt-3 mb-3 pt-1 pb-1 col-6" style="background-color: #edd7c5; box-shadow: 10px 10px 10px rgba(97, 70, 47, 0.5);">
+                    <h2 class="display-4">Lonely Hearts</h2>
+                </div>
+                <hr class="bg-warning" style="color: #c25804;">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="container-fluid rounded mt-3 mb-3 pt-1 pb-1 col-12" style="background-color: #edd7c5; box-shadow: 10px 10px 10px rgba(97, 70, 47, 0.5);">
+                    <p class="my-3" style="font-size: 200%;">З'єднуємо вас і ваших улюбленців</p>
+                    <p>Мрієш про домашнього улюбленця? Знайди його тут.</p>
+                    <a href="{% url 'cat:cat_view' %}" class="btn btn-lg btn-outline-dark" style="background-color: #78b0aa;
+                                                                                            box-shadow: 5px 5px 5px 5px rgba(97, 70, 47, 0.6);">Тиць</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'img/cat1.png' %}" alt="Example Image" style="width: 60%;">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="border rounded text-center p-3 m-3 mb-5"
+     style="background-color: #ede8e4; box-shadow: 10px 10px 30px rgba(97, 70, 47, 0.8);">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="display-4">Наші цифри</h2>
+                <hr class="bg-warning" style="color: #c25804;">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Тварин в притулку</h4>
+                <hr class="bg-warning" style="color: #c25804;">
+                <h2 class="display-4" style="text-shadow: 2px 7px 10px rgba(0, 0, 0, 0.4);">{{ our_numbers.cats|add:our_numbers.dogs }}</h2>
+            </div>
+            <div class="col-md-6">
+                <h4>Корму на день</h4>
+                <hr class="bg-warning" style="color: #c25804;">
+                <h2 class="display-4" style="text-shadow: 2px 7px 10px rgba(0, 0, 0, 0.4);">{{ our_numbers.food }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid rounded"
+     style="background-color: #f2ccae; box-shadow: 10px 10px 10px rgba(97, 70, 47, 0.6);">
+        <div class="row">
+            <div class="col text-center">
+                <h2 class="display-4">Чим нам допомогти ?</h2>
+                <hr class="bg-warning" style="color: #c25804;">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-5 mt-4 text-center">
+                <a href="{% url 'cat:cat_view' %}" class="btn btn-outline-dark mx-2"
+                   style="background-color: #78b0aa; box-shadow: 2px 2px 2px 2px rgba(97, 70, 47, 0.3);">Знайти друга</a>
+                <img src="{% static 'img/cat_friend.png' %}" alt="Example Image" style="width: 70%;">
+            </div>
+            <div class="col-md-4 mb-5 mt-4 text-center">
+                <a href="{% url 'cat:helps' %}" class="btn btn-outline-dark mx-2"
+                   style="background-color: #78b0aa; box-shadow: 2px 2px 2px 2px rgba(97, 70, 47, 0.3);">Допомогти з їжею</a>
+                <img src="{% static 'img/cat_eat.png' %}" alt="Example Image" style="width: 70%;">
+            </div>
+            <div class="col-md-4 mb-5 mt-4 text-center">
+                <a href="{% url 'cat:helps' %}" class="btn btn-outline-dark mx-2"
+                   style="background-color: #78b0aa; box-shadow: 2px 2px 2px 2px rgba(97, 70, 47, 0.3);">Допомогти з лікуванням</a>
+                <img src="{% static 'img/cat_love.png' %}" alt="Example Image" style="width: 60%;">
+            </div>
+        </div>
+</div>
+
+
+{% endblock %}

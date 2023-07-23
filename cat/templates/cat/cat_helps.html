@@ -1,0 +1,397 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid rounded text-center pt-3">
+    <div id="two" class="container-fluid rounded"
+         style="background-color: #f2ccae; box-shadow: 10px 10px 10px rgba(97, 70, 47, 0.6);">
+        <div class="row">
+            <div class="col text-center">
+                <h2 class="display-4">Як нам допомогти ?</h2>
+                <hr class="bg-warning" style="color: #c25804;">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-4 mb-4 text-center">
+                <a href="#finans" class="btn btn-outline-dark btn-lg mx-2"
+                   style="background-color: #78b0aa; box-shadow: 2px 2px 2px 2px rgba(97, 70, 47, 0.3);">Фінансово</a>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 mb-4 text-center">
+                <a href="#in_shelter" class="btn btn-outline-dark btn-lg mx-2"
+                   style="background-color: #78b0aa; box-shadow: 2px 2px 2px 2px rgba(97, 70, 47, 0.3);">Допомога у
+                    притулку</a>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 mb-4 text-center">
+                <a href="#inform" class="btn btn-outline-dark btn-lg mx-2"
+                   style="background-color: #78b0aa; box-shadow: 2px 2px 2px 2px rgba(97, 70, 47, 0.3);">Інформаційно</a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col d-flex align-items-center fs-1 font-weight-bold mt-2">
+            <p class="probl">Фінансова допомога тваринам </p>
+        </div>
+    </div>
+
+    <hr class="wave-line">
+    <br>
+    <div class="row">
+        <div class="col">
+            <div class="container-fluid rounded mt-3 mb-3 p-3"
+                 style="background-color: #f2ccae; box-shadow: 5px 5px 5px rgba(97, 70, 47, 0.4);">
+                <div class="row">
+                    <div class="col-md-4 mt-3">
+                        <img src="{% static 'img/debt.png' %}" alt="Изображение" class="img-fluid mt-3 mb-3 rounded"
+                             style="width: 80%;">
+                    </div>
+                    <div class="col-md-8 my-3 pt-3 rounded"
+                         style="background-color: #ede8e4; box-shadow: 5px 5px 5px rgba(97, 70, 47, 0.4);">
+                        <h4>Заборгованість притулку наразі складає</h4>
+                        <hr class="bg-warning">
+                        <h2 class="display-4" style="text-shadow: 2px 7px 10px rgba(0, 0, 0, 0.4);">{{ debt.debt }}
+                            грн</h2>
+                        <hr class="bg-warning">
+                        <div class="row">
+                            <div class="col">
+                                <p class="fs-5">
+                                    Разом ми рятуємо та піклуємося про життя беззахисних котів.
+                                    Ми надаємо лікування, харчування та догляд кожному коту, кому це необхідно.
+                                    Наша місія - забезпечити їм безпечне і любляче притулкове середовище.
+                                    Однак, через велику заборгованість з лікування наших пухнастих пацієнтів,
+                                    нам потрібна ваша допомога.
+                                    З вашою щедрістю та підтримкою ми зможемо продовжувати лікування та рятувати ще
+                                    більше котів.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row" id="finans">
+        <h2 class="fs-1 mb-1 font-weight-bold">Допомога на карту притулку !</h2>
+
+        <div class="col-md-6">
+            <div class="container-fluid rounded mt-1 mb-3 p-3 mt-5">
+                <p class="fs-5" style="font-size: 18px;"> " Ваші щедрі пожертви мають величезне значення для
+                    нашого притулку та благополуччя наших пухнастих підопічних. Вони дозволять нам продовжувати
+                    надавати медичну допомогу, лікування та забезпечувати догляд кожному коту в нашому притулку.
+                    Ваша важлива участь внесе значний внесок у порятунок та поліпшення життя цих чудових тварин "
+                </p>
+                <img src="{% static 'img/cat_smrt.png' %}" alt="Изображение" class="img-fluid mt-1 mb-1 rounded"
+                     style="width: 50%;">
+            </div>
+        </div>
+
+        <div class="col-md-6 mt-3">
+            {% for card in cards %}
+            <div class="row border border-3 border-dark rounded" style="background-color: rgba(255, 255, 0, 0.2);">
+                <div class="container-fluid rounded mt-1 p-2">
+                    <p class="fs-5 fw-bold">{{ card.name_bank_card }}</p>
+                    <p class="fs-5 fw-bold">{{ card.name_on_card }}</p>
+                    <p class="fs-1 fw-bold">{{ card.privar_one }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row ">
+        <div class="container-fluid rounded mt-3 mb-3 p-3">
+            <div class="row">
+
+                <div class="col-md-7 fs-5">
+                    <h2 class="fs-1">Допоможіть нам і оплатіть заборгованість одразу у клініці!</h2>
+                    <p>Зберігайте дорогоцінне життя! Ваша допомога - це шанс на краще майбутнє для бездомних
+                        котиків. Ви можете допомогти притулку і віднести готівкові кошти одразу у клініку
+                        погасивши борги притулку за операції, лікування та ветеринарну допомоги.
+                    <p>Кожна пожертва допомагає нам врятувати більше тварин і дати їм шанс на любов і турботу.
+                        Разом ми здатні змінити їхнє життя та забезпечити щасливе майбутнє. Приєднуйтесь до нас
+                        у нашій благородній місії!
+                    <p>Спасибі за вашу доброту і готовність допомогти безпритульним тваринам!</p>
+                    <p>Адреси клінік:</p>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <div class="row">
+                                        <div class="col-md-6 text-center">
+                                            <h1><strong>IVet</strong></h1>
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item">
+                                                    <img src="{% static 'img/clinic.png' %}" alt="Иконка адреса"
+                                                         class="icon">
+                                                    вул. Перлинна 11, ЖК Акварель 2
+                                                </li>
+                                            </ul>
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item">
+                                                    <a href="https://instagram.com/ivet_clinic_od?igshid=NjIwNzIyMDk2Mg==">
+                                                        <i class="fab fa-instagram"
+                                                           style="font-size: 2em; cursor: pointer;"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <div class="row d-flex justify-content-center">
+                                        <!-- Добавлен класс d-flex и justify-content-center -->
+                                        <div class="col-md-5 text-center">
+                                            <h1><strong>Impulse</strong></h1>
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item">
+                                                    <img src="{% static 'img/clinic.png' %}" alt="Иконка адреса"
+                                                         class="icon">
+                                                    вул. Михайла Грушевського, 50а/1
+                                                </li>
+                                            </ul>
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item ml-5">
+                                                    <a href="https://instagram.com/impulse_vet?igshid=NTc4MTIwNjQ2YQ==">
+                                                        <i class="fab fa-instagram"
+                                                           style="font-size: 2em; cursor: pointer;"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 d-flex justify-content-center align-items-center mb-5">
+                    <img src="{% static 'img/docktor.png' %}" alt="Изображение"
+                         class="img-fluid mt-5 mb-3 rounded w-100" style="max-width: 100%;">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-md-4">
+        <img src="{% static 'img/photos/photo_1.jpg' %}" alt="Изображение"
+             class="img-fluid mt-3 mb-3 rounded w-100">
+    </div>
+    <div class="col-md-8">
+        <div class="container-fluid rounded mt-3 mb-3 p-3">
+            <p class="fs-5 fw-bold">
+                Для притулку з 500 котами, в середньому, потрібна значна кількість корму щодня.
+                Орієнтовно,
+                зазвичай кожен кіт споживає від 150 до 250 грамів сухого корму на день. Отже, якщо
+                припустити
+                середнє значення в 200 грамів на кожного кота, загальна потреба притулку
+                становитиме:
+            </p>
+            <p class="fs-4">
+                200 г * 500 котів = 100 000 г (або 100 кг) сухого корму на день.
+            </p>
+            <img src="{% static 'img/cat_eat.png' %}" alt="Изображение"
+                 class="img-fluid mt-3 mb-3 rounded" style="width: 50%;">
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container" id="in_shelter">
+    <div class="row">
+        <div class="col d-flex align-items-center fs-1 font-weight-bold mt-2">
+            <p class="probl">Допомога у притулку </p>
+        </div>
+    </div>
+
+    <hr class="wave-line">
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="p-3 mb-5 rounded border" style="background-color: rgba(0, 250, 154, 0.2);">
+                <h3 class="mb-4 fs-2">У нашому приюті завжди раді вашій допомозі!</h3>
+                <p class="fs-5">Ви можете допомогти нам, купуючи та заносячи різноманітні потрібні речі. Ось
+                    список того, що нам можна придбати та принести у приют:</p>
+                <ul class="fs-5">
+                    <li>Корм для котів та кошенят - допоможе нам забезпечити наших пухнастих друзів поживним
+                        харчуванням.
+                    </li>
+                    <li>Наповнювач для лотків - це допоможе нам зберігати чистоту та затишок у притулку.
+                    </li>
+                    <li>Медичні засоби - медикаменти, бинти, марлеві пов'язки допоможуть нам доглядати за
+                        хворими тваринами.
+                    </li>
+                    <li>Теплі покривала та підстилки - забезпечать затишок та комфорт у спальних місцях
+                        тварин.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<!--    in shelter-->
+
+<div class="row">
+    <div class="container-fluid rounded mt-3 mb-3 p-3"
+         style="background-color: rgba(205, 177, 224, 0.4);">
+        <div class="row">
+            <div class="col-md-8 fs-4">
+                <h1>Як допомогти притулку з прибиранням та вигулом собак</h1>
+                <p>Допомога в притулку з прибиранням приміщень та вигулом собак може зробити величезний
+                    внесок у життя тварин.
+                    Ви можете допомогти притулку залишатися чистим і організованим, а також надати тваринам
+                    необхідну фізичну активність і соціальне взаємодія.</p>
+                <p>Ось кілька конкретних способів, як ви можете допомогти в притулку:</p>
+                <ul>
+                    <li>Прибирання лотків</li>
+                    <li>Миття кліток</li>
+                    <li>Вигул собак.</li>
+                    <li>Вичесування шорстки</li>
+                    <li>Погладушки</li>
+                </ul>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                <img src="{% static 'img/dog_wolk.png' %}" alt="Изображение"
+                     class="img-fluid mt-5 mb-3 rounded w-100" style="max-width: 100%;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--    Informashion helps-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col d-flex align-items-center fs-1 font-weight-bold mt-2">
+        <p class="probl">Допомогайте інформаційно</p>
+    </div>
+</div>
+
+<hr class="wave-line">
+<br>
+<br>
+<br>
+<div class="container d-flex justify-content-center" id="inform">
+    <div class="row">
+        <div class="col-md-6 my-3 rounded"
+             style="background-color: #f2ccae; box-shadow: 5px 5px 5px rgba(97, 70, 47, 0.4);">
+            <div class="row">
+                <div class="col">
+                    <p class="fs-3">
+                        Інформаційні репости, коментарі, вподобайки та відверті розмови ширять свідомість та
+                        сприяють благополуччю бездомних тварин, відкриваючи двері до їх нового щасливого життя.
+                    </p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-3 d-flex justify-content-center mt-5">
+                    <a href="https://www.instagram.com/lonely_hearts_odessa/?igshid=MzRlODBiNWFlZA==" target="_blank">
+                        <i class="fab fa-instagram instagram-icon" style="font-size: 3em; cursor: pointer;"></i>
+                    </a>
+                </div>
+                <div class="col-3 d-flex justify-content-center mt-5">
+                    <a href="https://www.facebook.com/people/%D0%95%D0%BB%D0%B5%D0%BD%D0%B0-%D0%A0%D0%BE%D1%82%D0%B0%D0%BD%D1%87%D1%83%D0%BA/pfbid0J9SCsuEWJMUGhufTS4NzN8B7ggRtX6vPD8W84H6ByUBiPZaijVobYdbv9difM3Q8l/"
+                       target="_blank">
+                        <i class="fab fa-facebook facebook-icon" style="font-size: 3em; cursor: pointer;"></i>
+                    </a>
+                </div>
+                <div class="col-3 d-flex justify-content-center mt-5">
+                    <a href="https://www.tiktok.com/@lonely_hearts_odessa" target="_blank">
+                        <i class="fab fa-tiktok tiktok-icon" style="font-size: 3em; cursor: pointer;"></i>
+                    </a>
+                </div>
+                <div class="col-3 d-flex justify-content-center mt-5">
+                    <a href="https://youtube.com/@lonely_hearts_odessa" target="_blank">
+                        <i class="fab fa-youtube youtube-icon" style="font-size: 3em; cursor: pointer;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+            <img class="rounded-circle img-fluid mt-3 mb-3" src="{% static 'img/repost.gif' %}" alt="Гиф-изображение"
+                 style="background-color: #ede8e4; max-width: 60%;">
+        </div>
+    </div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

@@ -1,0 +1,419 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="border rounded text-center p-3 m-3 mb-5"
+     style="background-color: #ffe3bd; box-shadow: 10px 10px 30px rgba(97, 70, 47, 0.8);">
+    <div class="container fs-4" >
+        <div class="container">
+                <div class="col-md-6 d-flex justify-content-center align-items-center mx-auto"
+                >
+                    <img class="border rounded " src="{{ cat.photo_1.url }}" alt="Фото кота" style="width: 100%;">
+                </div>
+            <br>
+            <div class="rounded col-md-6 d-flex justify-content-center align-items-center mx-auto"
+                style="background-color: #78b0aa; box-shadow: 2px 2px 2px 2px rgba(97, 70, 47, 0.3);">
+                <p style="font-size: 18px;">
+                    <strong>Якщо ваше серце зачепила саме ця тваринка, будь ласка, заповніть нижче форму адопції. Але хочемо попередити, що при фактичному перебуванні у притулку, вам може відгукнутися інша тваринка. Тож питання будуть узагальнені.</strong>
+                </p>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-3"></div>
+            <div class="col">
+                <form method="POST">
+                    {% csrf_token %}
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <label for="id_name">Як до вас можна звертатись? Напишіть Ваші Прізвище та Ім'я</label>
+                        <input type="text" class="form-control" id="id_name" name="name">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="id_phone_number">Ваш номер телефону (або два)</label>
+                        <input type="text" class="form-control" id="id_phone_number" name="phone_number">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_social_media_account">Якою соц.мережею ви користуєтесь. Додайте посилання на ваш аккаунт</label>
+                        <input type="text" class="form-control" id="id_social_media_account" name="social_media_account">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_address">Ваше місце проживання (назва населеного пункту та область)</label>
+                        <input type="text" class="form-control" id="id_address" name="address">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_housing_type">Ви живете в</label>
+                        <select class="form-control" id="id_housing_type" name="housing_type">
+                            <option value="Приватний будинок">Приватний будинок</option>
+                            <option value="Квартира">Квартира</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+
+                     <div class="form-group">
+                        <label for="id_living_arrangement">Ви шукаєте тваринку для проживання в:</label>
+                        <select class="form-control" id="id_living_arrangement" name="living_arrangement">
+                            <option value="Приватний будинок">Приватний будинок</option>
+                            <option value="Квартира">Квартира</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_rental_status">Чи ви є власником житла в якому мешкаєте?</label>
+                        <select class="form-control" id="id_rental_status" name="rental_status">
+                            <option value="так, я власник житла">так, я власник житла</option>
+                            <option value="житло арендоване.  Маю офіційний договів аренди, в якому зазначено дозвіл на проживання тварин.">житло арендоване.  Маю офіційний договів аренди, в якому зазначено дозвіл на проживання тварин.</option>
+                            <option value="житло арендоване.  Не маю офіційного договору аренди, в якому зазначено дозвіл проживання тварин">житло арендоване.  Не маю офіційного договору аренди, в якому зазначено дозвіл проживання тварин..</option>
+                            <option value="житло арендоване. Маю офіційний договір БЕЗ зазначення дозволу на проживання тварини">житло арендоване. Маю офіційний договір БЕЗ зазначення дозволу на проживання тварини</option>
+                            <option value="Інше:">Інше</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_desired_pet_age">Який вік тваринки ви розглядаєте</label>
+                        <select class="form-control" id="id_desired_pet_age" name="desired_pet_age">
+                            <option value="2-5 міс">2-5 міс</option>
+                            <option value="6-12 міс">6-12 міс</option>
+                            <option value="від 1  до 3х років">від 1  до 3х років</option>
+                            <option value="розглядаю дорослу тварину">розглядаю дорослу тварину</option>
+                            <option value="готовий взяти тварину на доживання">готовий взяти тварину на доживання</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_pet_care_experience">Чи маєте досвід в утриманні тваринки?</label>
+                        <select class="form-control" id="id_pet_care_experience" name="pet_care_experience">
+                            <option value="ТАК">ТАК</option>
+                            <option value="НІ, це буде мій перший досвід.">НІ, це буде мій перший досвід.</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_previous_pet_experience">Якою тваринкою ви опікувались раніше ?</label>
+                        <select class="form-control" id="id_previous_pet_experience" name="previous_pet_experience">
+                            <option value="котик">котик</option>
+                            <option value="песик">песик</option>
+                            <option value="інше">інше</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+                     <div class="form-group">
+                        <label for="id_your_experienc_keeping_animals">Розкажіть про ваш досвід в утриманні тваринок. Як утримувались котики.  Чи займались чимось разом з песиком (дресура\спортивні нормативи для собак)?  Дайте розгорнену відповідь.</label>
+                        <input type="text" class="form-control" id="id_your_experienc_keeping_animals" name="your_experienc_keeping_animals">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_how_old_was_your_last_pet">В якому віці була ваша остання тваринка? Де тваринка(тваринки) зараз? Що з ними сталось: загубилась (які обставини); померла (причини\обставини\діагноз); передали іншій родині (обставини\причини) тощо. Дайте розгорену відповідь.</label>
+                        <input type="text" class="form-control" id="id_how_old_was_your_last_pet" name="how_old_was_your_last_pet">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_current_pets">Чи  проживають зараз з вами інші тварини? Вкажіть вид, вік, стать, стерилізована чи ні, породу (якщо є).</label>
+                        <input type="text" class="form-control" id="id_current_pets" name="current_pets">
+                    </div>
+                    <br><br>
+                    <div class="form-group">
+                        <label for="id_feeding_knowledge">Що ви знаєте про гoдування тварини? Чим годували своїх попередніх тварин  і чим плануєте годувати зараз? Дайте розгорнену відповідь.</label>
+                        <input type="text" class="form-control" id="id_feeding_knowledge" name="feeding_knowledge">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_neutering_spaying_attitude">Ваше ставлення до кастрації\стерилізації?</label>
+                        <select class="form-control" id="id_neutering_spaying_attitude" name="neutering_spaying_attitude">
+                            <option value="ЗА кастрацію">ЗА кастрацію</option>
+                            <option value="ПРОТИ кастрації">ПРОТИ кастрації</option>
+                            <option value="Вважаю, що тваринка має хоч раз народити">Вважаю, що тваринка має хоч раз народити</option>
+                            <option value="Якщо це потрібно за медичними показниками">Якщо це потрібно за медичними показниками</option>
+                            <option value="Так, бо це зменшує рівень агресії та захровювання статевих органів">Так, бо це зменшує рівень агресії та захровювання статевих органів</option>
+                            <option value="Ні, бо це не природньо">Ні, бо це не природньо</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_vaccination_attitude">Яке ваше ставлення до щеплення та які  проводили щеплення своєї попередньої тваринки?</label>
+                        <input type="text" class="form-control" id="id_vaccination_attitude" name="vaccination_attitude">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_outdoor_cat_attitude">Як ви ставитесь до того, щоб котик гуляв на подвір'ї  будинку? ***якщо ви розглядаєте песика, то обирайте пункт з прочерком</label>
+                        <select class="form-control" id="id_outdoor_cat_attitude" name="outdoor_cat_attitude">
+                            <option value="Вважаю, що котику потрібне свіже повітря, головне, щоб повертався додому.">Вважаю, що котику потрібне свіже повітря, головне, щоб повертався додому.</option>
+                            <option value="Інколи можна, але під моїм наглядом чи на повідку">Інколи можна, але під моїм наглядом чи на повідку</option>
+                            <option value="Я проти цього, це може бути небезпечним.">Я проти цього, це може бути небезпечним.</option>
+                            <option value="---">---</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_rules_for_keeping_dog_cat">Що ви знаєте про правила утримання собаки/котика? Дайте розгорнуту відповідь.</label>
+                        <input type="text" class="form-control" id="id_rules_for_keeping_dog_cat" name="rules_for_keeping_dog_cat">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_dog_house_knowledge">Де має проживати собака в приватному будинку? ***якщо ви розглядаєте котика чи собаку для квартирного утримання  - обирайте пункт "0"</label>
+                        <select class="form-control" id="id_dog_house_knowledge" name="dog_house_knowledge">
+                            <option value="В середині будинку">В середині будинку</option>
+                            <option value="Є вол'єр">ІЄ вол'єр</option>
+                            <option value="є буда">є буда</option>
+                            <option value="0">0</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_decide_to_adopta_cat_dog">Чому ви вирішили взяти саме Котика\Песика?  Які задачі\функції має виконувати собака\котик?</label>
+                        <input type="text" class="form-control" id="id_decide_to_adopta_cat_dog" name="decide_to_adopta_cat_dog">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_dog_training_goals">Що має знати\вміти  собака\киця на момент адопції?</label>
+                        <input type="text" class="form-control" id="id_dog_training_goals" name="dog_training_goals">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_daily_time_commitment">Як багато часу в день ви можете приділити тваринці?</label>
+                        <select class="form-control" id="id_daily_time_commitment" name="daily_time_commitment">
+                            <option value="1-2  години">1-2  години</option>
+                            <option value="Більше 3х годин">Більше 3х годин</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+
+                     <div class="form-group">
+                        <label for="id_emergency_contact">Чи маєте довірену особу, яка зможе піклуватись про тваринку на час вашої відсутності?</label>
+                        <select class="form-control" id="id_emergency_contact" name="emergency_contact">
+                            <option value="Так">Так</option>
+                            <option value="Ні">Ні</option>
+                            <option value="Ні, але буду шукати">Ні, але буду шукати</option>
+                            <option value="Планую залишати в готелі для тварин">Планую залишати в готелі для тварин</option>
+                            <option value="Не розглядаю варіант залишати тварину">Не розглядаю варіант залишати тварину</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_animal_with_health_roblems">Чи готові ви взяти тваринку з проблемами по здоров'ю?</label>
+                        <select class="form-control" id="id_animal_with_health_roblems" name="animal_with_health_roblems">
+                            <option value="Так, готовий лікувати">Так, готовий лікувати</option>
+                            <option value="Так, але залежить від захворювання або проблеми">Так, але залежить від захворювання або проблеми</option>
+                            <option value="Категорично НІ">Категорично НІ</option>
+                            <option value="Не думав про таке">Не думав про таке</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+
+
+                    <div class="form-group">
+                        <label for="id_ready_for_additional_expenses">Чи готові ви  до додаткових витрат, якщо тваринка захворіє?</label>
+                        <input type="text" class="form-control" id="id_ready_for_additional_expenses" name="ready_for_additional_expenses">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_animal_problematic_personality">Чи готові ви до тваринки з проблемним характером  або проблемною поведінкою?</label>
+                        <input type="text" class="form-control" id="id_animal_problematic_personality" name="animal_problematic_personality">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_consultations_behavioral_specialists">Чи готові ви до додаткових витрат на консультації спеціалістів з коррекції поведінки: фелінолог(спеціаліст  з поведінки котів), зоопсихолог,кінолог, тощо</label>
+                        <input type="text" class="form-control" id="id_consultations_behavioral_specialists" name="consultations_behavioral_specialists">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_animal_may_scratch_bite_whine">Чи готові до того, що тваринка до певного віку і певний період часу, може дряпатись, кусатись, скавчати\мявчати чи бігати по ночах?</label>
+                        <input type="text" class="form-control" id="id_animal_may_scratch_bite_whine" name="animal_may_scratch_bite_whine">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_children_in_home">Чи є у вашій в родині є діти, вкажіть їх вік.</label>
+                        <input type="text" class="form-control" id="id_children_in_home" name="children_in_home">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_children_lived_animals">Чи жили ваші діти з тваринами раніше? Якщо так, то з якими тваринами та як довго? Дайте розгорнену відповідь. </label>
+                        <input type="text" class="form-control" id="id_children_lived_animals" name="children_lived_animals">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_everyone_ready_for">Чи всі готові до нового члена родини??</label>
+                        <select class="form-control" id="id_everyone_ready_for" name="everyone_ready_for">
+                            <option value="Так">Так</option>
+                            <option value="Ні">Ні</option>
+                            <option value="Ні, але будемо вмовляти">Ні, але будемо вмовляти</option>
+                            <option value="Хочемо зробити сюрприз">Хочемо зробити сюрприз</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_home_floor">На якому поверсі ви проживаєте? Як захищені вікна від випадіння кота? (якщо обираєте собаку ставте прочерк).</label>
+                        <input type="text" class="form-control" id="id_home_floor" name="home_floor">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_Im_ready_for_puddles_and_piles_at_home">Чи згодні ви з висловом: "Я готовий до луж та купок вдома"</label>
+                        <input type="text" class="form-control" id="id_Im_ready_for_puddles_and_piles_at_home" name="Im_ready_for_puddles_and_piles_at_home">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_prepared_fact_animal_can_spoil_your_roperty">Чи готові до того, що тваринка може зіпсувати ваше майно та цінні речі?</label>
+                        <input type="text" class="form-control" id="id_prepared_fact_animal_can_spoil_your_roperty" name="prepared_fact_animal_can_spoil_your_roperty">
+                    </div>
+                    <br>
+                    <br>
+
+                     <div class="form-group">
+                        <label for="id_how_do_you_see_your_animal">Якою ви бачите свою тваринку?</label>
+                        <select class="form-control" id="id_how_do_you_see_your_animal" name="how_do_you_see_your_animal">
+                            <option value="Лагідне, таке що завжди поряд">Лагідне, таке що завжди поряд</option>
+                            <option value="Тваринка має бути самостійною і легко переносити самотність">Тваринка має бути самостійною і легко переносити самотність</option>
+                            <option value="Щоб любила спати поруч">Щоб любила спати поруч</option>
+                            <option value="Повинна спати окремо">Повинна спати окремо</option>
+                            <option value="Активне і непосидюче">Активне і непосидюче</option>
+                            <option value="Спокійне, що любить поспати">Спокійне, що любить поспати</option>
+                            <option value="готові миритись з будь яким темпераментом">готові миритись з будь яким темпераментом</option>
+                            <option value="Інше:">Інше:</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_travel_plans">Якщо доведеться транспортувати тваринку, як плануєте це робити?</label>
+                        <input type="text" class="form-control" id="id_travel_plans" name="travel_plans">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_how_do_you_give_up_an_animal">Що може змусити вас відмовитись від спільного проживання з тваринкою ( в його утриманні)</label>
+                        <select class="form-control" id="id_how_do_you_give_up_an_animal" name="how_do_you_give_up_an_animal">
+                            <option value="захворювання, що можуть передаватись людині ( глисти, лишай, тощо)">захворювання, що можуть передаватись людині ( глисти, лишай, тощо)</option>
+                            <option value="Раптово виявлені захворювання (інфекційний перитоніт, рак, лейкоз, імунодифіцит, лейкемія, епілепсії, захворювання нирок тощо)">Раптово виявлені захворювання (інфекційний перитоніт, рак, лейкоз, імунодифіцит, лейкемія, епілепсії, захворювання нирок тощо)</option>
+                            <option value="Согласен">Согласен</option>
+                            <option value="Зіпсоване майно, проблема з чистоплотністю (туалет не там(для котів) \вдома (для собаки)">Зіпсоване майно, проблема з чистоплотністю (туалет не там(для котів) \вдома (для собаки)</option>
+                            <option value="втрата роботи\доходів">втрата роботи\доходів</option>
+                            <option value="хвороба ваша або родичів">хвороба ваша або родичів</option>
+                            <option value="переїзд в іншу країну">переїзд в іншу країну</option>
+                            <option value="переїзд до нового помешкання">переїзд до нового помешкання</option>
+                            <option value="алергія у вас або членів родини">алергія у вас або членів родини</option>
+                            <option value="не виправдані сподівання стосовно тварини">не виправдані сподівання стосовно тварини</option>
+                            <option value="не виправдані сподівання у власних можливостях">не виправдані сподівання у власних можливостях</option>
+                            <option value="ніякі">ніякі</option>
+                            <option value="інше">інше</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_ready_to_provide_photo_video_of_apartment">Якщо ви обрали песика** Чи готові ви надати фото\відео  помешкання або теріторії і вол'єру, щоб ми могли перевірити умови  для майбутнього проживання тварини?</label>
+                        <input type="text" class="form-control" id="id_ready_to_provide_photo_video_of_apartment" name="ready_to_provide_photo_video_of_apartment">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_signing_an_official_contract_passport">Всі наші тваринки віддаються після підписання офіційного договору з занесенням в нього паспортних  даних</label>
+                        <select class="form-control" id="id_signing_an_official_contract_passport" name="signing_an_official_contract_passport">
+                            <option value="Готовий підписати догорів">Готовий підписати догорів</option>
+                            <option value="Не готовий підписати договір">Не готовий підписати договір</option>
+                            <option value="Інше:">Інше:</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="id_photo_video_reports_of_your_pet">Чи готові ви підтримувати зв'язок з нами і  радувати нас фото/відео звітами вашого улюбленця?</label>
+                        <input type="text" class="form-control" id="id_photo_video_reports_of_your_pet" name="photo_video_reports_of_your_pet">
+                    </div>
+                    <br>
+                    <br>
+
+
+                    <div class="form-group">
+                        <label for="id_how_did_you_find_out_about_our_shelter">Звідки ви дізналися  про наш притулок ?</label>
+                        <input type="text" class="form-control" id="id_how_did_you_find_out_about_our_shelter" name="how_did_you_find_out_about_our_shelter">
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="form-group text-center">
+                        <label for="id_application_approved">Я даю згоду на обробку, зберігання та використання, згідно Закону України «Про захист персональних даних», своїх персональних даних, вказаних у цій Анкеті.</label>
+                        <div class="form-check d-flex justify-content-center">
+                            <input class="form-check-input" type="checkbox" id="id_application_approved" name="application_approved">
+                            <label class="form-check-label" for="id_application_approved">Даю згоду</label>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+
+
+
+                    <button type="submit" class="btn btn-primary active">Отправить</button>
+                </form>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="list-group">
+    {% for blog in blogs %}
+        <div id="two" class="container-fluid rounded text-center pt-3"
+             style="background-color: #78b0aa; box-shadow: 10px 10px 10px rgba(97, 70, 47, 0.6); ">
+                <img src="{{ blog.photo.url }}" alt="Изображение" class="img-fluid mt-3 mb-3 rounded" style="width: 80%; height: 80%; max-width: 800px; max-height: 600px;">
+
+
+            <div class="container-fluid rounded mt-3 mb-3 pt-1 pb-1 col-6" style="background-color: #edd7c5; box-shadow: 10px 10px 10px rgba(97, 70, 47, 0.5);">
+                <h2 class="h4">{{ blog.title }}</h2>
+            </div>
+            <div class="container-fluid rounded mt-3 mb-3 pt-1 pb-1 pl-2 pr-2 col-11" style="background-color: #edd7c5; box-shadow: 10px 10px 10px rgba(97, 70, 47, 0.6);">
+                <p class="lead">{{ blog.text }}</p>
+            </div>
+            <div class="container-fluid rounded mt-3 mb-3 pt-1 pl-2 pr-2 col-3" style="background-color: #edd7c5; box-shadow: 10px 10px 10px rgba(97, 70, 47, 0.6);">
+                <p class="small">Дата: {{ blog.date }}</p>
+            </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    {% empty %}
+        <div class="list-group-item">Нет доступных статей.</div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
