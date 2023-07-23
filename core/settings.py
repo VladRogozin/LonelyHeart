@@ -1,16 +1,14 @@
 import os
-from os import getenv
 from pathlib import Path
-from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv(BASE_DIR / '../.env')
+SECRET_KEY = 'django-insecure-b88xuo$#j_$e*xzct**+s@m*ge0)vgij1kb+!u=#qz4v+(!e6andfz'
 
-SECRET_KEY = getenv('DJANGO_SECRET_KEY')
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
 
-DEBUG = getenv('DJANGO_DEBUG').lower() in ('true', 'on', '1')
-ALLOWED_HOSTS = getenv('DJANGO_ALLOWED_HOSTS').split()
+ALLOWED_HOSTS = ['LonelyHearts.pythonanywhere.com']
 
 
 # Application definition
@@ -23,7 +21,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cat.apps.CatConfig',
-    'game.apps.GameConfig',
 
     'crispy_forms',
 
@@ -62,25 +59,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-if DEBUG:
-    DATABASES = {
+DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / '../db.sqlite3',
         }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'HOST': getenv('POSTGRES_HOST'),
-            'PORT': getenv('POSTGRES_PORT'),
-            'NAME': getenv('POSTGRES_DB'),
-            'USER': getenv('POSTGRES_USER'),
-            'PASSWORD': getenv('POSTGRES_PASSWORD')
-        }
-    }
-
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
