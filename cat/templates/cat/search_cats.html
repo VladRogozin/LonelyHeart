@@ -3,65 +3,60 @@
 {% block content %}
 <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for cat in cats %}
-    <div class="col">
+    <div class="col mb-5 mt-5">
         <div class="card" style="width: 100%;">
             <div id="carousel{{ cat.id }}" class="carousel slide">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{ cat.photo_1.url }}" class="d-block w-100" alt="Photo 1"
-                             style="max-width: 500px; max-height: 281px; min-height: 281px;">
+                        <img src="{{ cat.photo_1.url }}" class="d-block w-100" alt="Photo 1" style="max-width: 500px; max-height: 281px; min-height: 281px;">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ cat.photo_2.url }}" class="d-block w-100" alt="Photo 2"
-                             style="width: 80%; height: 80%; max-width: 500px; max-height: 281px; min-height: 281px;">
+                        <img src="{{ cat.photo_2.url }}" class="d-block w-100" alt="Photo 2" style="width: 80%; height: 80%; max-width: 500px; max-height: 281px; min-height: 281px;">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ cat.photo_3.url }}" class="d-block w-100" alt="Photo 3"
-                             style="width: 80%; height: 80%; max-width: 500px; max-height: 281px; min-height: 281px;">
+                        <img src="{{ cat.photo_3.url }}" class="d-block w-100" alt="Photo 3" style="width: 80%; height: 80%; max-width: 500px; max-height: 281px; min-height: 281px;">
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ cat.id }}"
-                        data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ cat.id }}" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ cat.id }}"
-                        data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ cat.id }}" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-            <div class="card-body" style="background-color: #f2ccae; box-shadow: 10px 10px 10px rgba(97, 70, 47, 0.6);">
+             <div class="card-body" style="background-color: #f2ccae; box-shadow: 10px 10px 10px rgba(97, 70, 47, 0.6);">
                 <h5 class="card-title">{{ cat.name }}</h5>
-                <div id="collapseExample" class="d-flex flex-column align-items-center">
+                <div id="collapseExample{{ cat.id }}" class="d-flex flex-column align-items-center">
                     <p class="card-text mb-2">{{ cat.features|truncatechars:100}}</p>
                     <div class="btn-group">
-                        <a class="btn btn-outline-dark" data-bs-toggle="collapse" href="#collapseText" role="button"
-                           aria-expanded="false" aria-controls="collapseText"
+                        <!-- Уникальные идентификаторы для каждой карточки -->
+                        <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#collapseText{{ cat.id }}" role="button"
+                           aria-expanded="false" aria-controls="collapseText{{ cat.id }}"
                            style="background-color: #78b0aa; box-shadow: 2px 2px 2px 2px rgba(97, 70, 47, 0.3);"
                         >Історія тваринки!</a>
-                        <a class="btn btn-outline-dark" href="#collapseMenu" role="button"
+                        <a class="btn btn-outline-dark btn-sm" href="#collapseMenu{{ cat.id }}" role="button"
                            data-bs-toggle="collapse"
-                           aria-expanded="false" aria-controls="collapseMenu"
+                           aria-expanded="false" aria-controls="collapseMenu{{ cat.id }}"
                            style="background-color: #78b0aa; box-shadow: 2px 2px 2px 2px rgba(97, 70, 47, 0.3);"
                         >Показати деталі</a>
-                        <a class="btn btn-outline-dark" href="{{ cat.video_link }}" target="_blank" rel="noopener"
+                        <a class="btn btn-outline-dark btn-sm" href="{{ cat.video_link }}" target="_blank" rel="noopener"
                            style="background-color: #78b0aa; box-shadow: 2px 2px 2px 2px rgba(97, 70, 47, 0.3);"
                         >Видео з тваринкою</a>
                     </div>
                 </div>
 
-                <div class="collapse" id="collapseText">
+                <div class="collapse" id="collapseText{{ cat.id }}">
                     <p class="card-text">{{ cat.features }}</p>
                 </div>
             </div>
-            <div class="collapse" id="collapseMenu">
+            <div class="collapse" id="collapseMenu{{ cat.id }}">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item fs-6" style="background-color: #f2ccae; border: 3px solid #877261;">Вік:
                         {{ cat.age }}
                     </li>
-                    <li class="list-group-item fs-6" style="background-color: #edd7c5; border: 3px solid #877261;">
-                        Стать:
+                    <li class="list-group-item fs-6" style="background-color: #edd7c5; border: 3px solid #877261;">Стать:
                         {{ cat.gender }}
                     </li>
                     <li class="list-group-item fs-6" style="background-color: #f2ccae; border: 3px solid #877261;">

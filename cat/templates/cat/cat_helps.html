@@ -64,13 +64,7 @@
                         <div class="row">
                             <div class="col">
                                 <p class="fs-5">
-                                    Разом ми рятуємо та піклуємося про життя беззахисних котів.
-                                    Ми надаємо лікування, харчування та догляд кожному коту, кому це необхідно.
-                                    Наша місія - забезпечити їм безпечне і любляче притулкове середовище.
-                                    Однак, через велику заборгованість з лікування наших пухнастих пацієнтів,
-                                    нам потрібна ваша допомога.
-                                    З вашою щедрістю та підтримкою ми зможемо продовжувати лікування та рятувати ще
-                                    більше котів.
+                                    Разом ми рятуємо та піклуємося про життя беззахисних тваринок.  Наша місія - забезпечити лікування, харчування та догляд кожному хвостику, створити  безпечне та любляче  середовище. Однак, через велику заборгованість в клініках та інших витрат,  нам потрібна ваша допомога. З вашою підтримкою ми зможемо продовжувати лікування та забезпечувати комфортне життя кожному пухнастому другу!
                                 </p>
                             </div>
                         </div>
@@ -93,7 +87,7 @@
                 <p class="fs-5" style="font-size: 18px;"> " Ваші щедрі пожертви мають величезне значення для
                     нашого притулку та благополуччя наших пухнастих підопічних. Вони дозволять нам продовжувати
                     надавати медичну допомогу, лікування та забезпечувати догляд кожному коту в нашому притулку.
-                    Ваша важлива участь внесе значний внесок у порятунок та поліпшення життя цих чудових тварин "
+                    Ваша важлива участь внесе значний внесок у порятунок та поліпшення життя тварин "
                 </p>
                 <img src="{% static 'img/cat_smrt.png' %}" alt="Изображение" class="img-fluid mt-1 mb-1 rounded"
                      style="width: 50%;">
@@ -101,17 +95,77 @@
         </div>
 
         <div class="col-md-6 mt-3">
-            {% for card in cards %}
-            <div class="row border border-3 border-dark rounded" style="background-color: rgba(255, 255, 0, 0.2);">
-                <div class="container-fluid rounded mt-1 p-2">
-                    <p class="fs-5 fw-bold">{{ card.name_bank_card }}</p>
-                    <p class="fs-5 fw-bold">{{ card.name_on_card }}</p>
-                    <p class="fs-1 fw-bold">{{ card.privar_one }}</p>
-                </div>
-            </div>
-            {% endfor %}
+
+            {% if cards %}
+                {% with first_card=cards.0 two_card=cards.1 tree_card=cards.2 %}
+                    <div class="row border border-3 border-dark rounded" style="background-color: rgba(255, 255, 0, 0.2);">
+                        <div class="container-fluid rounded mt-1 p-2">
+                            <p class="fs-5 fw-bold">{{ first_card.name_bank_card }}</p>
+                            <p class="fs-5 fw-bold">{{ first_card.name_on_card }}</p>
+                            <p class="fs-1 fw-bold">{{ first_card.privar_one }}</p>
+                            <p class="fs-1 fw-bold">{{ two_card.privar_one }}</p>
+                        </div>
+                    </div>
+                    <div class="row border border-3 border-dark rounded" style="background-color: rgba(255, 255, 0, 0.2);">
+                        <div class="container-fluid rounded mt-1 p-2">
+                            <p class="fs-5 fw-bold">{{ tree_card.name_bank_card }}</p>
+                            <p class="fs-5 fw-bold">{{ tree_card.name_on_card }}</p>
+                            <p class="fs-1 fw-bold">{{ tree_card.privar_one }}</p>
+                        </div>
+                    </div>
+                {% endwith %}
+            {% else %}
+                <p>No cards found.</p>
+            {% endif %}
+
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!--    in shelter-->
+
+    <div class="container">
+        <div class="row">
+            <!-- Первая колонка с ссылками на пайпел -->
+            <div class="col-md-6 mt-5">
+                <h2>PayPal</h2>
+                <ul class="list-group">
+                    <li class="list-group-item fs-5">feklamedveduk@gmail.com</li>
+                    <li class="list-group-item fs-5">rotancukelena@gmail.com</li>
+                </ul>
+                <img src="{% static 'img/paypel.png' %}" alt="Изображение"
+                    class="img-fluid mt-3 mb-3 rounded w-100">
+                <hr class="wave-line">
+            </div>
+            <!-- Вторая колонка с ссылкой на донат банк -->
+            <div class="col-md-6">
+                <hr class="wave-line">
+                <h2>Monobank Безпечний переказ коштів</h2>
+                <a class="btn btn-outline-dark mx-2" style="background-color: #78b0aa; box-shadow: 2px 2px 2px 2px rgba(97, 70, 47, 0.3);"
+                   href="https://send.monobank.ua/jar/8WT9rCsqcy?fbclid=PAAaY7cw5GGjHAzHxZrfsQ0a8LrXsG8H0FP1OfMp-wM82LyWUfev5umvZXeEw"
+                    >Monobank</a>
+                <img src="{% static 'img/mono.png' %}" alt="Изображение"
+                    class="img-fluid mt-3 mb-3 rounded w-100">
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
     <br>
@@ -122,14 +176,9 @@
 
                 <div class="col-md-7 fs-5">
                     <h2 class="fs-1">Допоможіть нам і оплатіть заборгованість одразу у клініці!</h2>
-                    <p>Зберігайте дорогоцінне життя! Ваша допомога - це шанс на краще майбутнє для бездомних
-                        котиків. Ви можете допомогти притулку і віднести готівкові кошти одразу у клініку
-                        погасивши борги притулку за операції, лікування та ветеринарну допомоги.
-                    <p>Кожна пожертва допомагає нам врятувати більше тварин і дати їм шанс на любов і турботу.
-                        Разом ми здатні змінити їхнє життя та забезпечити щасливе майбутнє. Приєднуйтесь до нас
-                        у нашій благородній місії!
-                    <p>Спасибі за вашу доброту і готовність допомогти безпритульним тваринам!</p>
-                    <p>Адреси клінік:</p>
+                        <hr class="wave-line">
+                    <p class="mb-5">Ви можете допомогти притулку і віднести готівкові кошти одразу у клініку, погасивши борги притулку за операції, лікування та стаціонар.</p>
+                        <hr class="wave-line mb-5">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
@@ -197,6 +246,7 @@
     </div>
 
 </div>
+
 <br>
 <br>
 <br>
@@ -207,21 +257,21 @@
 <br>
 <div class="row">
     <div class="col-md-4">
-        <img src="{% static 'img/photos/photo_1.jpg' %}" alt="Изображение"
+        <img src="{% static 'img/CATSS.JPG' %}" alt="Изображение"
              class="img-fluid mt-3 mb-3 rounded w-100">
     </div>
     <div class="col-md-8">
         <div class="container-fluid rounded mt-3 mb-3 p-3">
             <p class="fs-5 fw-bold">
-                Для притулку з 500 котами, в середньому, потрібна значна кількість корму щодня.
-                Орієнтовно,
-                зазвичай кожен кіт споживає від 150 до 250 грамів сухого корму на день. Отже, якщо
-                припустити
-                середнє значення в 200 грамів на кожного кота, загальна потреба притулку
-                становитиме:
+                Для притулку з 600 котами потрібна значна кількість корму та наповнювачу щодня.
+            </p>
+            <p class="fs-5 fw-bold">
+                Орієнтовно, за день один кіт  з'їдає 75-90 грам  сухого  корму.
             </p>
             <p class="fs-4">
-                200 г * 500 котів = 100 000 г (або 100 кг) сухого корму на день.
+                Отже, по мінімуму   загальна потреба притулку становитиме
+                    75г*600 котів = 45 000 грам, або 45 кг корму на день.
+                    А також  150-160 кг наповнювачу щодня
             </p>
             <img src="{% static 'img/cat_eat.png' %}" alt="Изображение"
                  class="img-fluid mt-3 mb-3 rounded" style="width: 50%;">
@@ -255,25 +305,31 @@
     <br>
     <br>
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-7 ">
             <div class="p-3 mb-5 rounded border" style="background-color: rgba(0, 250, 154, 0.2);">
                 <h3 class="mb-4 fs-2">У нашому приюті завжди раді вашій допомозі!</h3>
-                <p class="fs-5">Ви можете допомогти нам, купуючи та заносячи різноманітні потрібні речі. Ось
-                    список того, що нам можна придбати та принести у приют:</p>
+                <p class="fs-5">Окрім донатів, ми будемо щиро вдячні за допомогу у закупівлі завжди необхідних речей :</p>
                 <ul class="fs-5">
-                    <li>Корм для котів та кошенят - допоможе нам забезпечити наших пухнастих друзів поживним
-                        харчуванням.
+                    <li>Сухий та вологий корм \ паштети (Підходять такі як на фото)
                     </li>
-                    <li>Наповнювач для лотків - це допоможе нам зберігати чистоту та затишок у притулку.
+                    <br>
+                    <li>Наповнювач для лотків
                     </li>
-                    <li>Медичні засоби - медикаменти, бинти, марлеві пов'язки допоможуть нам доглядати за
-                        хворими тваринами.
+                    <br>
+                    <li>Медичні засоби (шприц на 2\5\10\20 мл, розчин Рінгера, пелюшки 60х90)
                     </li>
-                    <li>Теплі покривала та підстилки - забезпечать затишок та комфорт у спальних місцях
-                        тварин.
+                    <br>
+                    <li>Побутова хімія та інше (вологі серветки, рідкий пральний порошок, засіб для миття посуду, рідке мило, поліпропіленові мішки, стяжки)
+                    </li>
+                    <br>
+                    <li>Іграшки та ласощі
                     </li>
                 </ul>
             </div>
+        </div>
+        <div class="col-md-5 d-flex justify-content-center align-items-center">
+            <img src="{% static 'img/ga.png' %}" alt="Изображение"
+                 class="img-fluid mt-3 mb-3 rounded" style="width: 80%;">
         </div>
     </div>
 </div>

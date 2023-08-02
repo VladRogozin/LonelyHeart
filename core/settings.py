@@ -23,7 +23,6 @@ INSTALLED_APPS = [
     'cat.apps.CatConfig',
 
     'crispy_forms',
-
 ]
 
 MIDDLEWARE = [

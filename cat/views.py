@@ -18,6 +18,8 @@ def cat_view(request):
         cats = Cat.objects.filter(what_kind_of_pet='Yoang Cat').order_by('name')
     elif sort_param == 'Kitten':
         cats = Cat.objects.filter(what_kind_of_pet='Kitten').order_by('name')
+    elif sort_param == 'All':
+        cats = Cat.objects.filter(what_kind_of_pet__in=['Kitten', 'Yoang Cat', 'Cat']).order_by('name')
     else:
         cats = Cat.objects.all()
 
@@ -71,3 +73,4 @@ def customers_form(request, cat_id):
             return HttpResponseRedirect(reverse('cat:cat_view'))
 
     return render(request, 'cat/customersForm.html', {'form': form, 'cat': cat})
+
