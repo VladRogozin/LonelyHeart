@@ -68,15 +68,28 @@
             <div id="carousel{{ cat.id }}" class="carousel slide">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{ cat.photo_1.url }}" class="d-block w-100" alt="Photo 1" style="max-width: 500px; max-height: 281px; min-height: 281px;">
+                        <div class="d-flex justify-content-center align-items-center" style="height: 281px; overflow: hidden;">
+                            <img src="{{ cat.photo_1.url }}" class="d-block h-100 modal-image" alt="Photo 1"
+                                 style="object-fit: cover; width: auto; max-height: 100%; cursor: pointer;"
+                                 data-bs-toggle="modal" data-bs-target="#photoModal{{ cat.id }}">
+                        </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ cat.photo_2.url }}" class="d-block w-100" alt="Photo 2" style="width: 80%; height: 80%; max-width: 500px; max-height: 281px; min-height: 281px;">
+                        <div class="d-flex justify-content-center align-items-center" style="height: 281px; overflow: hidden;">
+                            <img src="{{ cat.photo_2.url }}" class="d-block h-100 modal-image" alt="Photo 2"
+                                 style="object-fit: cover; width: auto; max-height: 100%; cursor: pointer;"
+                                 data-bs-toggle="modal" data-bs-target="#photoModal{{ cat.id }}">
+                        </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ cat.photo_3.url }}" class="d-block w-100" alt="Photo 3" style="width: 80%; height: 80%; max-width: 500px; max-height: 281px; min-height: 281px;">
+                        <div class="d-flex justify-content-center align-items-center" style="height: 281px; overflow: hidden;">
+                            <img src="{{ cat.photo_3.url }}" class="d-block h-100 modal-image" alt="Photo 3"
+                                 style="object-fit: cover; width: auto; max-height: 100%; cursor: pointer;"
+                                 data-bs-toggle="modal" data-bs-target="#photoModal{{ cat.id }}">
+                        </div>
                     </div>
                 </div>
+
                 <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ cat.id }}" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
@@ -86,6 +99,7 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+
              <div class="card-body" style="background-color: #f2ccae; box-shadow: 10px 10px 10px rgba(97, 70, 47, 0.6);">
                 <h5 class="card-title">{{ cat.name }}</h5>
                 <div id="collapseExample{{ cat.id }}" class="d-flex flex-column align-items-center">
@@ -155,8 +169,32 @@
             </div>
         </div>
     </div>
+        <div class="modal fade" id="photoModal{{ cat.id }}" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel{{ cat.id }}"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="{{ cat.photo_1.url }}" class="img-fluid modal-image" alt="Photo 1" data-bs-toggle="modal" data-bs-target="#photoModal{{ cat.id }}">
+                    </div>
+                </div>
+            </div>
+        </div>
     {% empty %}
     <p>No cats available.</p>
     {% endfor %}
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const modalImages = document.querySelectorAll(".modal-image");
+
+        modalImages.forEach(image => {
+            image.addEventListener("click", function() {
+                const modal = document.querySelector(`#${this.getAttribute("data-bs-target")}`);
+                const modalDialog = modal.querySelector(".modal-dialog");
+                modalDialog.classList.toggle("modal-lg");
+            });
+        });
+    });
+</script>
 {% endblock %}
